@@ -1,0 +1,29 @@
+<h1>Listing hoges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Suuji</th>
+      <th>Mojiretsu</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hoges.each do |hoge| %>
+      <tr>
+        <td><%= hoge.suuji %></td>
+        <td><%= hoge.mojiretsu %></td>
+        <td><%= link_to 'Show', hoge %></td>
+        <td><%= link_to 'Edit', edit_hoge_path(hoge) %></td>
+        <td><%= link_to 'Destroy', hoge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hoge', new_hoge_path %>

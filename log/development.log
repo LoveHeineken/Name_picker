@@ -1,0 +1,3583 @@
+  [1m[36m (9.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (4.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (25.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCompanies (20130621114155)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "tel" varchar(255), "fax" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130621114155"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateGroups (20130621115905)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "company_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130621115905"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20130621120709)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "group_id" integer, "name" varchar(255), "mail" varchar(255), "tel" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130621120709"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "name_cards" ADD "fax" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "name_cards" ADD "tel" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "name_cards" ADD "url" varchar(255)[0m
+  [1m[35m (3.6ms)[0m  CREATE TEMPORARY TABLE "aname_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer, "address" varchar(255), "fax" varchar(255), "tel" varchar(255), "url" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "name_cards"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "name_cards"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer, "address" varchar(255), "fax" varchar(255), "tel" varchar(255), "url" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aname_cards"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "aname_cards"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130621125707"]]
+  [1m[36m (27.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2013-07-12 13:03:59 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 107ms (Views: 43.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-07-12 13:40:37 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 93ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-07-12 13:40:42 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.2ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-07-12 13:42:09 +0000
+Processing by NameCardsController#index as HTML
+  Rendered name_cards/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 930ms (Views: 922.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-07-12 13:42:10 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-07-12 13:42:10 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-07-12 13:42:10 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-07-12 13:42:10 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-07-12 13:42:11 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-07-12 13:42:11 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-07-12 13:42:11 +0000
+
+
+Started GET "/" for 10.0.2.2 at 2013-07-12 13:43:53 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.2ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/name_cards/new" for 10.0.2.2 at 2013-07-12 13:44:19 +0000
+Processing by NameCardsController#new as HTML
+  Rendered name_cards/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 21ms (Views: 8.3ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-07-12 13:44:19 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-07-12 13:44:19 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-07-12 13:44:19 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-07-12 13:44:19 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-07-12 13:44:20 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-07-12 13:44:20 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-07-12 13:44:20 +0000
+
+
+Started GET "/name_cards/new" for 10.0.2.2 at 2013-07-12 13:54:42 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#new as HTML
+  Rendered name_cards/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 120ms (Views: 51.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:43 +0000
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+Processing by NameCardsController#index as HTML
+  Rendered name_cards/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-07-12 13:54:49 +0000
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  Rendered name_cards/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 162ms (Views: 128.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-08-16 06:57:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 08:07:48 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.3ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (75.0ms)
+Completed 500 Internal Server Error in 115ms
+
+ActionView::Template::Error (undefined local variable or method `new_item_path' for #<#<Class:0xb649e510>:0xb649def8>):
+    30: 
+    31: <br>
+    32: 
+    33: <%= link_to 'New Item', new_item_path %>
+    34: <p>Find me in app/views/name_cards/index.html.erb</p>
+  app/views/name_cards/index.html.erb:33:in `_app_views_name_cards_index_html_erb__1041412300__618266308'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.6ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 08:10:21 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.2ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (80.5ms)
+Completed 500 Internal Server Error in 120ms
+
+ActionView::Template::Error (undefined local variable or method `new_name_cards_path' for #<#<Class:0xb649e650>:0xb649e038>):
+    30: 
+    31: <br>
+    32: 
+    33: <%= link_to 'New Name_cards', new_name_cards_path %>
+    34: <p>Find me in app/views/name_cards/index.html.erb</p>
+  app/views/name_cards/index.html.erb:33:in `_app_views_name_cards_index_html_erb___57948268__618266148'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.6ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 08:11:47 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.5ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (74.2ms)
+Completed 500 Internal Server Error in 116ms
+
+ActionView::Template::Error (undefined local variable or method `new_name_cards_path' for #<#<Class:0xb649e6b4>:0xb649e09c>):
+    30: 
+    31: <br>
+    32: 
+    33: <%= link_to 'New name_cards', new_name_cards_path %>
+    34: <p>Find me in app/views/name_cards/index.html.erb</p>
+  app/views/name_cards/index.html.erb:33:in `_app_views_name_cards_index_html_erb___1044409466__618266098'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.8ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 08:24:36 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.3ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (75.9ms)
+Completed 500 Internal Server Error in 117ms
+
+ActionView::Template::Error (undefined local variable or method `new_name_cards_path' for #<#<Class:0xb649e6f0>:0xb649e0d8>):
+    28: 
+    29: <br>
+    30: 
+    31: <%= link_to 'New name_cards', new_name_cards_path %>
+    32: # <p>Find me in app/views/name_cards/index.html.erb</p>
+  app/views/name_cards/index.html.erb:31:in `_app_views_name_cards_index_html_erb___36477305__618266068'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (27.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHoges (20130816121603)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "hoges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "suuji" integer, "mojiretsu" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816121603"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 12:31:35 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.0ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (51.0ms)
+Completed 500 Internal Server Error in 119ms
+
+ActionView::Template::Error (undefined local variable or method `new_name_cards_path' for #<#<Class:0xa14e984>:0xa14e0d8>):
+    28: 
+    29: <br>
+    30: 
+    31: <%= link_to 'New name_cards', new_name_cards_path %>
+    32: # <p>Find me in app/views/name_cards/index.html.erb</p>
+  app/views/name_cards/index.html.erb:31:in `_app_views_name_cards_index_html_erb__837766207_84510400'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.5ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-08-16 12:32:46 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.2ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 1258ms (Views: 1230.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-08-16 12:32:48 +0000
+
+
+Started GET "/admin" for 10.0.2.2 at 2013-08-30 09:05:40 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__674886923__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-08-30 09:05:46 +0000
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__674886923__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-08-30 09:05:48 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__674886923__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.2ms)[0m  rollback transaction
+
+
+Started GET "/" for 10.0.2.2 at 2013-08-30 09:43:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__932656210__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-08-30 09:48:54 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__577127945__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-11 10:44:06 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__456668506__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (40.6ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (67.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+
+
+Started GET "/images/favicon.ico" for 10.0.2.2 at 2013-10-14 13:56:51 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__571907065__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (71.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-14 13:56:56 +0000
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__571907065__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (76.3ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (116.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.2ms)[0m  rollback transaction
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-14 16:11:24 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__901383604__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+SQLite3::SQLException: table "companies" already exists: CREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (3.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "name_cards" ADD "fax" varchar(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "name_cards" ADD "tel" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "name_cards" ADD "url" varchar(255)[0m
+  [1m[35m (0.4ms)[0m  CREATE TEMPORARY TABLE "aname_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime, "user_id" integer, "address" varchar(255), "fax" varchar(255), "tel" varchar(255), "url" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "name_cards"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "name_cards"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer, "address" varchar(255), "fax" varchar(255), "tel" varchar(255), "url" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aname_cards"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "aname_cards"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130621125707"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateHoges (20130816121603)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "hoges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "suuji" integer, "mojiretsu" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816121603"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124017"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20130816124042)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124042"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateGroups (20130816124133)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124133"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-15 01:03:47 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 61ms (Views: 26.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-15 01:04:06 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/master_rokkis/new" for 10.0.2.2 at 2013-10-15 01:04:20 +0000
+
+ActionController::RoutingError (No route matches [GET] "/master_rokkis/new"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.8ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (70.3ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (248.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 01:24:27 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 56ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 02:50:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 32ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 02:53:18 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 68ms (Views: 48.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 02:53:23 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 05:40:32 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 05:42:27 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__32988738__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateScaffoldTests (20131017054204)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "scaffold_tests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131017054204"]]
+  [1m[36m (20.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-17 05:43:58 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 40ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTests (20131018101000)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "tests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131018101000"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:10:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 52ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/test" for 10.0.2.2 at 2013-10-18 10:11:01 +0000
+
+ActionController::RoutingError (No route matches [GET] "/test"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (12.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (104.1ms)
+
+
+Started GET "/test" for 10.0.2.2 at 2013-10-18 10:14:20 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/test"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (128.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:18:04 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 84ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/name_pickers" for 10.0.2.2 at 2013-10-18 10:32:47 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/name_pickers"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (12.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (128.1ms)
+
+
+Started GET "/name_picker" for 10.0.2.2 at 2013-10-18 10:32:53 +0000
+
+ActionController::RoutingError (No route matches [GET] "/name_picker"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (16.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (144.2ms)
+
+
+Started GET "/company" for 10.0.2.2 at 2013-10-18 10:33:01 +0000
+
+ActionController::RoutingError (No route matches [GET] "/company"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (16.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (124.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:33:33 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 40ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:33:39 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (16.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "email" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+SQLite3::SQLException: duplicate column name: address: ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:36:18 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__808012857__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.0ms)
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "email" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+SQLite3::SQLException: duplicate column name: address: ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:36:59 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__796544009__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:37:02 +0000
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.0) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.0) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__796544009__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+SQLite3::SQLException: duplicate column name: address: ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (8.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "email" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddColumnToNameCards (20130621125707)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (4.0ms)[0m  [1mALTER TABLE "name_cards" ADD "user_id" integer[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "name_cards" ADD "address" varchar(255)
+SQLite3::SQLException: duplicate column name: address: ALTER TABLE "name_cards" ADD "address" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateNameCards (20130517104445)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "name_cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "email" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130517104445"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateHoges (20130816121603)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "hoges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "suuji" integer, "mojiretsu" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816121603"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCompanies (20130816124017)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "companies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "email" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124017"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20130816124042)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "phone" integer, "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124042"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateGroups (20130816124133)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "groups" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "phone" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20130816124133"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 10:40:45 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-10-18 10:40:53 +0000
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.0ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 1786ms (Views: 1761.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:55 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:56 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:56 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 10:40:56 +0000
+
+
+Started GET "/name_cards/new" for 10.0.2.2 at 2013-10-18 10:41:01 +0000
+Processing by NameCardsController#new as HTML
+  Rendered name_cards/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 20ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/company" for 10.0.2.2 at 2013-10-18 11:10:43 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/company"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (8.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (12.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (128.1ms)
+
+
+Started GET "/user" for 10.0.2.2 at 2013-10-18 11:10:53 +0000
+
+ActionController::RoutingError (No route matches [GET] "/user"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (12.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (72.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 10.0.2.2 at 2013-10-18 11:33:03 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 84ms (Views: 56.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-10-18 11:33:08 +0000
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.0ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 168ms (Views: 164.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:33:09 +0000
+
+
+Started GET "/company" for 10.0.2.2 at 2013-10-18 11:33:16 +0000
+
+ActionController::RoutingError (No route matches [GET] "/company"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (92.0ms)
+
+
+Started GET "/companies" for 10.0.2.2 at 2013-10-18 11:33:24 +0000
+
+SyntaxError (/home/vagrant/work/namepicker/app/controllers/companies_controller.rb:73: syntax error, unexpected end-of-input, expecting keyword_end):
+  activesupport (4.0.0) lib/active_support/dependencies.rb:423:in `load'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:423:in `block in load_file'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:615:in `new_constants_in'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:422:in `load_file'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:323:in `require_or_load'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:462:in `load_missing_constant'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:183:in `const_missing'
+  activesupport (4.0.0) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.0) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.0) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.0) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.0) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:534:in `get'
+  activesupport (4.0.0) lib/active_support/dependencies.rb:565:in `constantize'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__372137025__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/vagrant/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.0ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2013-10-18 11:35:05 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 212ms (Views: 172.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:06 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:07 +0000
+
+
+Started GET "/users/new" for 10.0.2.2 at 2013-10-18 11:35:10 +0000
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (48.1ms)
+  Rendered users/new.html.erb within layouts/application (56.1ms)
+Completed 500 Internal Server Error in 60ms
+
+ActionView::Template::Error (undefined method `adress' for #<User:0x9f1f898>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :adress %><br>
+    20:     <%= f.text_field :adress %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/users/_form.html.erb:20:in `block in _app_views_users__form_html_erb___986902808_83506830'
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___986902808_83506830'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___1043528740_83442320'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/users/new" for 10.0.2.2 at 2013-10-18 11:35:10 +0000
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (0.0ms)
+  Rendered users/new.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `adress' for #<User:0xb5ced708>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :adress %><br>
+    20:     <%= f.text_field :adress %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/users/_form.html.erb:20:in `block in _app_views_users__form_html_erb___986902808__622261268'
+  app/views/users/_form.html.erb:1:in `_app_views_users__form_html_erb___986902808__622261268'
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___1043528740__622370118'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 11:35:45 +0000
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:35:46 +0000
+
+
+Started GET "/groups/new" for 10.0.2.2 at 2013-10-18 11:35:49 +0000
+Processing by GroupsController#new as HTML
+  Rendered groups/_form.html.erb (36.0ms)
+  Rendered groups/new.html.erb within layouts/application (40.0ms)
+Completed 500 Internal Server Error in 44ms
+
+ActionView::Template::Error (undefined method `adress' for #<Group:0xb5c3b9a4>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :adress %><br>
+    20:     <%= f.text_field :adress %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/groups/_form.html.erb:20:in `block in _app_views_groups__form_html_erb__12566973__622718228'
+  app/views/groups/_form.html.erb:1:in `_app_views_groups__form_html_erb__12566973__622718228'
+  app/views/groups/new.html.erb:3:in `_app_views_groups_new_html_erb__1030354026__622736538'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started GET "/groups/new" for 10.0.2.2 at 2013-10-18 11:35:49 +0000
+Processing by GroupsController#new as HTML
+  Rendered groups/_form.html.erb (0.0ms)
+  Rendered groups/new.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `adress' for #<Group:0xaa29c0c>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :adress %><br>
+    20:     <%= f.text_field :adress %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/groups/_form.html.erb:20:in `block in _app_views_groups__form_html_erb__12566973_89233090'
+  app/views/groups/_form.html.erb:1:in `_app_views_groups__form_html_erb__12566973_89233090'
+  app/views/groups/new.html.erb:3:in `_app_views_groups_new_html_erb__1030354026_89217120'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+
+
+Started GET "/groups/" for 10.0.2.2 at 2013-10-18 11:37:57 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 212ms (Views: 180.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:37:58 +0000
+
+
+Started GET "/groups/new" for 10.0.2.2 at 2013-10-18 11:38:00 +0000
+Processing by GroupsController#new as HTML
+  Rendered groups/_form.html.erb (44.0ms)
+  Rendered groups/new.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 60ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for 10.0.2.2 at 2013-10-18 11:38:06 +0000
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"a", "address"=>"a"}, "commit"=>"Create Group"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (12.0ms)[0m  INSERT INTO "groups" ("address", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["address", "a"], ["created_at", Fri, 18 Oct 2013 11:38:06 UTC +00:00], ["name", "a"], ["updated_at", Fri, 18 Oct 2013 11:38:06 UTC +00:00]]
+  [1m[36m (16.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/groups/1
+Completed 302 Found in 72ms (ActiveRecord: 28.0ms)
+
+
+Started GET "/groups/1" for 10.0.2.2 at 2013-10-18 11:38:06 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered groups/show.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `adress' for #<Group:0xbb844d4>):
+     7: 
+     8: <p>
+     9:   <strong>Adress:</strong>
+    10:   <%= @group.adress %>
+    11: </p>
+    12: 
+    13: <%= link_to 'Edit', edit_group_path(@group) %> |
+  app/views/groups/show.html.erb:10:in `_app_views_groups_show_html_erb__393264595_98359100'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 11:45:57 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 236ms (Views: 204.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:45:58 +0000
+
+
+Started GET "/groups/1" for 10.0.2.2 at 2013-10-18 11:46:01 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered groups/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups/1/edit" for 10.0.2.2 at 2013-10-18 11:46:03 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered groups/_form.html.erb (12.0ms)
+  Rendered groups/edit.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/groups/1" for 10.0.2.2 at 2013-10-18 11:46:09 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"ab", "address"=>"b"}, "commit"=>"Update Group", "id"=>"1"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."group_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?
+  [1m[35m (0.0ms)[0m  rollback transaction
+Completed 500 Internal Server Error in 28ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?):
+  app/controllers/groups_controller.rb:45:in `block in update'
+  app/controllers/groups_controller.rb:44:in `update'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 11:46:34 +0000
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 60ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups/1/edit" for 10.0.2.2 at 2013-10-18 11:46:36 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered groups/_form.html.erb (4.0ms)
+  Rendered groups/edit.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 11:46:39 +0000
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/groups/1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+Processing by GroupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "id"=>"1"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  DELETE FROM "groups" WHERE "groups"."id" = ?  [["id", 1]]
+  [1m[36m (12.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 24ms (ActiveRecord: 16.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:42 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:43 +0000
+
+
+Started GET "/groups/new" for 10.0.2.2 at 2013-10-18 11:46:44 +0000
+Processing by GroupsController#new as HTML
+  Rendered groups/_form.html.erb (4.0ms)
+  Rendered groups/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"c", "address"=>"c"}, "commit"=>"Create Group"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "groups" ("address", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["address", "c"], ["created_at", Fri, 18 Oct 2013 11:46:49 UTC +00:00], ["name", "c"], ["updated_at", Fri, 18 Oct 2013 11:46:49 UTC +00:00]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/groups/2
+Completed 302 Found in 24ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/groups/2" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered groups/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 20ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:46:49 +0000
+
+
+Started GET "/groups/2/edit" for 10.0.2.2 at 2013-10-18 11:46:51 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered groups/_form.html.erb (4.0ms)
+  Rendered groups/edit.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/groups/2" for 10.0.2.2 at 2013-10-18 11:46:52 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"c", "address"=>"c"}, "commit"=>"Update Group", "id"=>"2"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."group_id" = ?  [[nil, 2]]
+SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?):
+  app/controllers/groups_controller.rb:45:in `block in update'
+  app/controllers/groups_controller.rb:44:in `update'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (40.0ms)
+
+
+Started GET "/users" for 10.0.2.2 at 2013-10-18 11:47:10 +0000
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:10 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 11:47:11 +0000
+
+
+Started GET "/users/new" for 10.0.2.2 at 2013-10-18 11:47:13 +0000
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (44.0ms)
+  Rendered users/new.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 68ms (Views: 64.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 10.0.2.2 at 2013-10-18 11:47:15 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "user"=>{"name"=>"h", "address"=>"h"}, "commit"=>"Create User"}
+  [1m[36m (4.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("address", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["address", "h"], ["created_at", Fri, 18 Oct 2013 11:47:15 UTC +00:00], ["name", "h"], ["updated_at", Fri, 18 Oct 2013 11:47:15 UTC +00:00]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 88ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/users/1" for 10.0.2.2 at 2013-10-18 11:47:15 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 0ms
+
+NameError (uninitialized constant UsersController::Users):
+  app/controllers/users_controller.rb:67:in `set_user'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+
+
+Started GET "/users/company" for 10.0.2.2 at 2013-10-18 12:03:50 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"company"}
+Completed 500 Internal Server Error in 24ms
+
+NameError (uninitialized constant UsersController::Users):
+  app/controllers/users_controller.rb:67:in `set_user'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+
+
+Started GET "/users/companies" for 10.0.2.2 at 2013-10-18 12:03:54 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"companies"}
+Completed 500 Internal Server Error in 0ms
+
+NameError (uninitialized constant UsersController::Users):
+  app/controllers/users_controller.rb:67:in `set_user'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.0ms)
+
+
+Started GET "/name_cards" for 10.0.2.2 at 2013-10-18 12:04:14 +0000
+Processing by NameCardsController#index as HTML
+  [1m[35mNameCard Load (0.0ms)[0m  SELECT "name_cards".* FROM "name_cards"
+  Rendered name_cards/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 184ms (Views: 172.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:15 +0000
+
+
+Started GET "/name_cards/new" for 10.0.2.2 at 2013-10-18 12:04:33 +0000
+Processing by NameCardsController#new as HTML
+  Rendered name_cards/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 76ms (Views: 68.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:43 +0000
+
+
+Started GET "/groups/2" for 10.0.2.2 at 2013-10-18 12:04:48 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered groups/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 60ms (Views: 56.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 12:04:50 +0000
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/groups/2" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+Processing by GroupsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "id"=>"2"}
+  [1m[35mGroup Load (4.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  DELETE FROM "groups" WHERE "groups"."id" = ?  [["id", 2]]
+  [1m[36m (16.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 28ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (4.0ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:54 +0000
+
+
+Started GET "/groups/new" for 10.0.2.2 at 2013-10-18 12:04:55 +0000
+Processing by GroupsController#new as HTML
+  Rendered groups/_form.html.erb (12.0ms)
+  Rendered groups/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 32ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/groups" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"d", "address"=>"d"}, "commit"=>"Create Group"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "groups" ("address", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["address", "d"], ["created_at", Fri, 18 Oct 2013 12:04:58 UTC +00:00], ["name", "d"], ["updated_at", Fri, 18 Oct 2013 12:04:58 UTC +00:00]]
+  [1m[36m (16.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/groups/3
+Completed 302 Found in 100ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/groups/3" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered groups/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 20ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:58 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:59 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:59 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:59 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:59 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:04:59 +0000
+
+
+Started GET "/groups/3/edit" for 10.0.2.2 at 2013-10-18 12:05:00 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/_form.html.erb (4.0ms)
+  Rendered groups/edit.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/groups/3" for 10.0.2.2 at 2013-10-18 12:05:01 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"d", "address"=>"d"}, "commit"=>"Update Group", "id"=>"3"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."group_id" = ?  [[nil, 3]]
+SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 12ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?):
+  app/controllers/groups_controller.rb:45:in `block in update'
+  app/controllers/groups_controller.rb:44:in `update'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-18 12:19:11 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 248ms (Views: 200.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:12 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:13 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:13 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:13 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:19:13 +0000
+
+
+Started GET "/groups/3/edit" for 10.0.2.2 at 2013-10-18 12:19:15 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/_form.html.erb (28.0ms)
+  Rendered groups/edit.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 60ms (Views: 56.0ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/groups/3" for 10.0.2.2 at 2013-10-18 12:19:16 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"d", "address"=>"d"}, "commit"=>"Update Group", "id"=>"3"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."group_id" = ?  [[nil, 3]]
+SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 36ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: users.group_id: SELECT "users".* FROM "users"  WHERE "users"."group_id" = ?):
+  app/controllers/groups_controller.rb:44:in `update'
+
+
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /home/vagrant/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.0ms)
+
+
+Started GET "/groups/3" for 10.0.2.2 at 2013-10-18 12:23:31 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  Rendered groups/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 44ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:32 +0000
+
+
+Started GET "/groups/3/edit" for 10.0.2.2 at 2013-10-18 12:23:35 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/_form.html.erb (0.0ms)
+  Rendered groups/edit.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 20ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/groups/3" for 10.0.2.2 at 2013-10-18 12:23:40 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"d", "address"=>"d"}, "commit"=>"Update Group", "id"=>"3"}
+  [1m[35mGroup Load (0.0ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/groups/3
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/groups/3" for 10.0.2.2 at 2013-10-18 12:23:40 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (0.0ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-18 12:23:41 +0000
+
+
+Started GET "/groups" for 10.0.2.2 at 2013-10-19 06:38:41 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GroupsController#index as HTML
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (88.4ms)
+Completed 200 OK in 526ms (Views: 425.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:42 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:43 +0000
+
+
+Started GET "/groups/3/edit" for 10.0.2.2 at 2013-10-19 06:38:47 +0000
+Processing by GroupsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (1.1ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/_form.html.erb (111.3ms)
+  Rendered groups/edit.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 143ms (Views: 136.8ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/groups/3" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+Processing by GroupsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kI+0in7KluHoA+pK81M0nkmhsTM0updIDENzTft2sA=", "group"=>{"name"=>"d", "address"=>"d"}, "commit"=>"Update Group", "id"=>"3"}
+  [1m[35mGroup Load (0.5ms)[0m  SELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/groups/3
+Completed 302 Found in 20ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/groups/3" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered groups/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 40ms (Views: 32.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/companies.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/application.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/group.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/groups.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/name_card.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/hoges.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/name_cards.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/scaffold_tests.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/tests.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/user.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/users.css?body=1" for 10.0.2.2 at 2013-10-19 06:38:48 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/companies.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/group.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/groups.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/hoges.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/name_card.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/name_cards.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/scaffold_tests.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/tests.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/user.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/users.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2013-10-19 06:38:49 +0000

@@ -1,0 +1,33 @@
+<h1>NameCards#index</h1>
+# added view items. delete if error message occurs.
+<h1>Listing items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @name_cards.each do |name_cards| %>
+      <tr>
+        <td><%= name_cards.name %></td>
+        <td><%= name_cards.address %></td>
+        <td><%= link_to 'Show', name_cards %></td>
+        <td><%= link_to 'Edit', edit_name_cards_path(name_cards) %></td>
+        <td><%= link_to 'Destroy', name_cards, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New name_cards', new_name_card_path %>
+# <p>Find me in app/views/name_cards/index.html.erb</p>
+
