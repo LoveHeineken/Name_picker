@@ -40,10 +40,10 @@ class NameCardsController < ApplicationController
 
   def destroy
     @name_card.destroy
-   respond_to do |format|
-       format.html { redirect_to name_card_url }
-       format.json { head :no_content }
-     end
+    respond_to do |format|
+      format.html { redirect_to name_card_url }
+      format.json { head :no_content }
+    end
   end
 
   private

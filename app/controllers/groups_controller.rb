@@ -41,11 +41,11 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-      if @group.update(group_params)
-        redirect_to @group, notice: 'Group was successfully updated.'
-      else
-        render action: 'edit'
-      end
+    if @group.update(group_params)
+      redirect_to @group, notice: 'Group was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   # DELETE /groups/1

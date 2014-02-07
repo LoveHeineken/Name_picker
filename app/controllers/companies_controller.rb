@@ -35,38 +35,38 @@ class CompaniesController < ApplicationController
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
+  end
 
-    # PATCH/PUT /companies/1
-    # PATCH/PUT /companies/1.json
-    def update
-      respond_to do |format|
-        if @company.update(company_parms)
-          redirect_to @company, notice: 'Company was successfully updated.'
-        else
-          render action: 'edit'
-        end
+  # PATCH/PUT /companies/1
+  # PATCH/PUT /companies/1.json
+  def update
+    respond_to do |format|
+      if @company.update(company_parms)
+        redirect_to @company, notice: 'Company was successfully updated.'
+      else
+        render action: 'edit'
       end
     end
+  end
 
-    # DELETE /companies/1
-    # DELETE /companies/1.json
-    def destroy
-      @company.destroy
-      respond_to do |format|
-        format.html { redirect_to companies_url }
-        format.json { head :no_content }
-      end
+  # DELETE /companies/1
+  # DELETE /companies/1.json
+  def destroy
+    @company.destroy
+    respond_to do |format|
+      format.html { redirect_to companies_url }
+      format.json { head :no_content }
     end
+  end
 
-    private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params[:id])
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_company
+    @company = Company.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def company_params
-      params.require(:company).permit(:name, :address)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def company_params
+    params.require(:company).permit(:name, :address)
   end
 end

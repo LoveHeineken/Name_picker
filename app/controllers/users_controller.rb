@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         redirect_to @user, notice "User was successfully updated"
-        else
+      else
         render action: 'edit'
       end
     end
