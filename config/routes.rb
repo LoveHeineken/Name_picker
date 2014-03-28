@@ -1,31 +1,9 @@
-Namepicker::Application.routes.draw do
-  resources :tests
-
-  resources :scaffold_tests
-
-  resources :groups
-
-  resources :users
-
+BusinessCard::Application.routes.draw do
   resources :companies
-
-  resources :hoges
-
-  get "group/index"
-  get "group/show"
-  get "group/new"
-  get "group/edit"
-  get "group/create"
-  get "group/update"
-  get "group/destroy"
-  get "user/index"
-  get "user/show"
-  get "user/new"
-  get "user/edit"
-  get "user/create"
-  get "user/update"
-  get "user/destroy"
+  resources :groups
+  resources :users
   resources :name_cards
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -66,7 +44,7 @@ Namepicker::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

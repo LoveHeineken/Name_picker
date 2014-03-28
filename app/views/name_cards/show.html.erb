@@ -1,2 +1,29 @@
-<h1>NameCards#show</h1>
-<p>Find me in app/views/name_cards/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @name_card.name %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @name_card.adress %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @name_card.tel %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @name_card.fax %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @name_card.url %>
+</p>
+
+<%= link_to 'Edit', edit_name_card_path(@name_card) %> |
+<%= link_to 'Back', name_cards_path %>

@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Namepicker::Application.load_tasks
+BusinessCard::Application.load_tasks

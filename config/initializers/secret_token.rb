@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Namepicker::Application.config.secret_key_base = '901a8b2f635671729621b3dc64d8e7d2dcb2c485644672fbb2007f12fe99310ffda782b5b7c1b96a05498af3f403bb210d6f65aa5dba84b361d0ec9ed240ee74'
+BusinessCard::Application.config.secret_key_base = '1d812032ee85213a9613245c52ae3eb218c7a925e7e567d362df7692fe5af835bf4a03eb20060ae0b31e59c2aa210c4328d4c422cf038d4786d8521ffc7c74a4'
