@@ -142,12 +142,12 @@ describe Company do
 
   describe :url do
     context '入力値=MAXの場合、正常' do
-      subject{ build(:company_1, url: "http://8901234567890123123456.jp") }
+      subject{ build(:company_1, url: "http://12312345678901234567.jp") }
       its(:valid?){ should be_true }
     end
 
     context '入力値=MAX+1の場合、異常' do
-      subject{ build(:company_1, url: "http://89012345678901231234567.jp") }
+      subject{ build(:company_1, url: "http://123123456789012345678.jp") }
       its(:valid?){ should be_false }
     end
 

@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :company_1, class: "Company" do
-    name    "test_1"
-    adress  "abcdefghijklmnopqr"
-    tel      "000-0000-0000"
-    fax      "111-1111-1111"
-    url      "http://www.234567890123456789"
+    name    "テスト"
+    adress  "東京都台東区駒形バンダイのがんぐだい"
+    tel      "00-000-0000"
+    fax      "11-1111-1111"
+    url      "http://example.com"
   end
 end
