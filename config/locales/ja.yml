@@ -1,3 +1,7 @@
 ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'レコードインバリッド'
   # アクションで使う日本語パターン
-  actions:
+#  actions:

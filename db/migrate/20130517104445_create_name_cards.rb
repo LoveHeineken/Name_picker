@@ -3,8 +3,11 @@ class CreateNameCards < ActiveRecord::Migration
     create_table :name_cards do |t|
       t.string :name
       t.string :adress
-      t.string :email
-      t.integer :phone
+#      t.string :email
+#      t.integer :phone
+      t.string :fax
+      t.string :tel
+      t.string :url
 
       t.timestamps
     end

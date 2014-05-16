@@ -16,16 +16,15 @@ ActiveRecord::Schema.define(version: 20130816124133) do
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "adress"
-    t.string   "email"
-    t.integer  "phone"
+    t.string   "fax"
+    t.string   "tel"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.string   "adress"
-    t.integer  "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,17 +39,17 @@ ActiveRecord::Schema.define(version: 20130816124133) do
   create_table "name_cards", force: true do |t|
     t.string   "name"
     t.string   "adress"
-    t.string   "email"
-    t.integer  "phone"
+    t.string   "fax"
+    t.string   "tel"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "adress"
-    t.integer  "phone"
-    t.string   "email"
+    t.string   "mail"
+    t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
