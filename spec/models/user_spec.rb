@@ -82,10 +82,12 @@ describe User do
     end 
     
     context 'メアドが重複している場合、異常' do
-      let(:user){ create(:user_1)} 
-      subject{ build(:user_1, mail: user.mail) }
-      its(:valid?){ should be_false }
-    end  
+      pending '一意かどうかをチェックするため、重複していないかどうかというspecを追加していく' do
+        let(:user){ create(:user_1)} 
+        subject{ build(:user_1, mail: user.mail) }
+        its(:valid?){ should be_false }
+      end  
+    end
 
     context '入力値が13文字未満の場合、異常' do
       subject{ build(:user_1, mail: "example.com") }
