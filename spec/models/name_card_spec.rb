@@ -18,19 +18,19 @@ describe NameCard do
     end 
   end 
 
-  describe :adress do
+  describe :address do
     context '入力値=MAXの場合、正常' do
-      subject{ build(:name_card_1, adress: 'あ' * 10000) }
+      subject{ build(:name_card_1, address: 'あ' * 10000) }
       its(:valid?){ should be_truthy}
     end 
 
     context '入力値=MAX+1の場合、異常' do
-      subject{ build(:name_card_1, adress: 'あ' * (10000 + 1)) }
+      subject{ build(:name_card_1, address: 'あ' * (10000 + 1)) }
       its(:valid?){ should be_falsey }
     end 
 
     context '入力値=nilの場合、異常' do
-      subject{ build(:name_card_1, adress: nil) }
+      subject{ build(:name_card_1, address: nil) }
       its(:valid?){ should be_falsey }
     end 
   end 

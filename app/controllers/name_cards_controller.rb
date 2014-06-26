@@ -45,7 +45,7 @@ class NameCardsController < ApplicationController
   end
 
   def name_card_params
-    params.require(:name_card).permit(:name, :adress, :fax, :tel, :url)
+    params.require(:name_card).permit(:name, :address, :fax, :tel, :url)
   end
 
 end

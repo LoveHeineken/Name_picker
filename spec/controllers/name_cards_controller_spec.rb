@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe NameCardsController do
   # viewの検証までする
   #  render_views
   describe " GET :index" do
@@ -15,16 +15,16 @@ describe UsersController do
 
   describe " POST :create" do
     context '保存に成功した場合' do
-      subject { post :create, post: { name: "hoge", address: "body", fax: "03-1111-1111", url: "http://example.com"} }
+      subject { post :create, name_card: { name: "hoge", address: "body", tel: "03-0000-0000", fax: "03-1111-1111", url: "http://example.com"} }
       # 件数が増えているかどうか確認する
-      it { expect{ subject }.to change(Company, :count).by(1) }
+      it { expect{ subject }.to change(NameCard, :count).by(1) }
       it { should be_redirect }
     end 
 
     context 'validation errorになった場合' do
-      subject { post :create, post: { name: "hoge", address: "body", fax: "03-1111-1111", url: "http://example.com"} }
+      subject { post :create, name_card: { name: "hoge", address: "body", fax: "03-1111-1111", url: "http://example.com"} }
       # 件数が増えているかどうか確認する
-      it { expect{ subject }.to_not change(Company, :count) }
+      it { expect{ subject }.to_not change(NameCard, :count) }
       # it { should render_template(:new) }でも可能
       it { should render_template("new") }
     end 
@@ -36,8 +36,8 @@ describe UsersController do
 
       # Post.should_receive(:find).with('1').and_return(Post.new(title: "hoge", body: "body"))
       # 以下の２行は上の行でも書ける
-      obj = Company.new name: "hoge", address: "body", fax: "03-1111-1111", url: "http://example.com"
-      Company.should_receive(:find).with("1").and_return(obj)
+      obj = NameCard.new name: "hoge", address: "body", fax: "03-1111-1111", url: "http://example.com"
+      NameCard.should_receive(:find).with("1").and_return(obj)
 
       should be_success
     }  

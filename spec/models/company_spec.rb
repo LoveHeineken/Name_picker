@@ -19,7 +19,7 @@ describe Company do
     end
   end
 
-  describe :adress do
+  describe :address do
     context '入力値=MAXの場合、正常' do
       let(:company){ build(:company_1) }
       subject{ build(:company_1) }
@@ -27,12 +27,12 @@ describe Company do
     end
 
     context '入力値=MAX+1の場合、異常' do
-      subject{ build(:company_1, adress: 'あ' * (18 + 1)) }
+      subject{ build(:company_1, address: 'あ' * (18 + 1)) }
       its(:valid?){ should be_falsey }
     end
 
     context '入力値=nilの場合、異常' do
-      subject{ build(:company_1, adress: nil) }
+      subject{ build(:company_1, address: nil) }
       its(:valid?){ should be_falsey }
     end
   end

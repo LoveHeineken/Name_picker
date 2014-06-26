@@ -18,7 +18,7 @@ create_company_count.times do |count|
 
   Company.create!(
     name: "company_#{count + 1}",
-    adress: "会社住所その#{count + 1}",
+    address: "会社住所その#{count + 1}",
     tel: "0120-333-906#{count}",
     fax: "0120-117-117#{count}",
     url: "http://example.com/company#{count + 1}.com"
@@ -64,7 +64,7 @@ User.all.each do |user|
 
     user.name_cards.build(
       name: "company_#{count + 1}",
-      adress: "名刺住所その#{count + 1}",
+      address: "名刺住所その#{count + 1}",
       tel: "0120-33-90#{count}",
       fax: "0120-117-117#{count}",
       url: "http://example.com/company#{count + 1}"

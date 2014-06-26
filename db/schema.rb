@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130816124133) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
-    t.string   "adress"
+    t.string   "address"
     t.string   "fax"
     t.string   "tel"
     t.string   "url"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20130816124133) do
 
   create_table "name_cards", force: true do |t|
     t.string   "name"
-    t.string   "adress"
+    t.string   "address"
     t.string   "fax"
     t.string   "tel"
     t.string   "url"
