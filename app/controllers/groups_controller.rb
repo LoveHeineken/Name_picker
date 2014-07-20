@@ -2,14 +2,14 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = @companies.groups.page(params[:page])
   end
 
   def show
   end
 
   def new
-    @gourp = Group.new
+    @group = Group.new
   end
 
   def create

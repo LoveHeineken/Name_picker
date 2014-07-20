@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 describe GroupsController do
+  before do
+    FactoryGirl.create(:company_1)
+  end
+
   # viewの検証までする
-  #  render_views
+  render_views
   describe " GET :index" do
     subject { get :index }
     it { should be_success }
-  end 
+  end
 
   describe " GET :new" do
     subject { get :new }
@@ -40,6 +44,6 @@ describe GroupsController do
       Group.should_receive(:find).with("1").and_return(obj)
 
       should be_success
-    }  
+    }
   end
 end

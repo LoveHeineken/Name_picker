@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe NameCardsController do
   # viewの検証までする
-  #  render_views
+    render_views
   describe " GET :index" do
     subject { get :index }
     it { should be_success }

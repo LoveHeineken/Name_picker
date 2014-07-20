@@ -16,7 +16,7 @@ create_company_count.times do |count|
 
   puts "create companies #{count + 1}..."
 
-  Company.create!(
+  Company.create(
     name: "company_#{count + 1}",
     address: "会社住所その#{count + 1}",
     tel: "0120-333-906#{count}",
