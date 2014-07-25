@@ -1,4 +1,5 @@
 BusinessCard::Application.routes.draw do
+
   resources :companies do
     resources :groups do
       resources :users do

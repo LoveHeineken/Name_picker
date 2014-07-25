@@ -1,22 +1,25 @@
 class GroupsController < ApplicationController
+  before_action :set_company
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = @companies.groups.page(params[:page])
+    @groups = @company.groups
   end
 
   def show
   end
 
   def new
-    @group = Group.new
+    @groups = @company.groups
+    # @group = Group.new
   end
 
   def create
-    @group = Group.new(group_params)
+    @groups = @company.groups.new(group_params)
+    # @group = Group.new(group_params)
 
     if @group.save
-      redirect_to @group, notice: 'Group was successfully created.'
+      redirect_to company_groups_path(params[:company_id]), notice: 'Group was successfully updated.'
     else
       render action: 'new'
     end
@@ -27,7 +30,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to @group, notice: 'Group was successfully updated.'
+      redirect_to company_group_path(@group.company_id,@group.id), notice: 'Group was successfully updated.'
     else
       render action: 'edit'
     end
@@ -35,14 +38,10 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_url
+    redirect_to company_groups_path(params[:company_id])
   end
 
   private
-
-  def set_group
-    @group = Group.find(params[:id])
-  end
 
   def group_params
     params.require(:group).permit(:name)

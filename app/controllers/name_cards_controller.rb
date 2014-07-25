@@ -40,10 +40,6 @@ class NameCardsController < ApplicationController
 
   private
 
-  def set_name_card
-    @name_card = NameCard.find(parmas[:id])
-  end
-
   def name_card_params
     params.require(:name_card).permit(:name, :address, :fax, :tel, :url)
   end
