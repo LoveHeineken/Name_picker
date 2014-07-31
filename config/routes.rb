@@ -1,5 +1,4 @@
 BusinessCard::Application.routes.draw do
-
   resources :companies do
     resources :groups do
       resources :users do
@@ -7,9 +6,9 @@ BusinessCard::Application.routes.draw do
       end
     end
   end
-
-
-  # The priority is based upon order of creation: first created -> highest priority.
+  root :to => "companies#index"
+ # optional, this just sets the root route
+ # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
