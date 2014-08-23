@@ -4,26 +4,30 @@ describe UsersController do
   before(:each) do
     @company = FactoryGirl.create(:company_1)
     @group = FactoryGirl.create(:group_1)
-    @group.company = @company
-    @user = @group.users.new
-    @user.group = @group
+    @user = FactoryGirl.create(:user_1)
+    @company = @company.groups
+    @group = @company.groups
+    @user = @group.users
+#    @user.group = @group
+#    company_id: @company.id
+#    group_id: @group.id
   end
 
   # viewの検証までする
   render_views
   describe " GET :index" do
-    subject { get :index, :company_id => @company.id,:group_id => @group.id }
+    subject { get :index, :company_id => @company.id, :group_id => @group.id }
     it { should be_success }
   end
 
   describe " GET :new" do
-    subject { get :new ,:company_id => @company.id,:group_id => @group.id}
+    subject { get :new ,:company_id => @company.id, :group_id => @group.id}
     it { should be_success }
   end
 
   describe " POST :create" do
     context '保存に成功した場合' do
-      subject { post :create,:company_id => @company.id ,:user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
+      subject { post :create,:company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
       # 件数が増えているかどうか確認する
       it { expect{ subject }.to change(User, :count).by(1) }
       it { should be_redirect }
@@ -39,7 +43,7 @@ describe UsersController do
   end
 
   describe " GET :show" do
-    subject { get :show, id: 1 ,:company_id => @company.id,:group_id => @group.id }
+    subject { get :show, id: 1 ,:company_id => @company.id, :group_id => @group.id }
     it {
 
       # Post.should_receive(:find).with('1').and_return(Post.new(title: "hoge", body: "body"))

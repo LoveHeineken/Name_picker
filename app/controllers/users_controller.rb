@@ -2,21 +2,22 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = group.users.order(:name).page params[:page]
   end
 
   def show
   end
 
   def new
-    @user = User.new
+    group = Group.find(params[:group_id])
+    @user = group.users.new
   end
 
   def create
-    @user = User.new(user_params)
-
+    group = Group.find(params[:group_id])
+    @user = group.users.create(user_params)
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to company_group_users_path(group.company_id,group.id)
     else
       render action: 'new'
     end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to company_group_user_path(@user.group.company_id,@user.group.id,@user.id) , notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
@@ -35,10 +36,13 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_url
+    redirect_to company_group_users_path(@user.group.company_id,@user.group.id)
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :mail, :tel)

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe CompaniesController do
+
   # viewの検証までする
   render_views
   describe " GET :index" do
