@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     company = Company.find(params[:company_id])
-    @groups = @company.groups
+    @group = @company.groups
   end
 
   def show
@@ -12,13 +12,13 @@ class GroupsController < ApplicationController
 
   def new
     company = Company.find(params[:company_id])
-    @groups = @company.groups
+    @group = @company.groups
     # @group = Group.new
   end
 
   def create
     company = Company.find(params[:company_id])
-    @groups = @company.groups.new(group_params)
+    @group = @company.groups.new(group_params)
     # @group = Group.new(group_params)
 
     if @group.save
