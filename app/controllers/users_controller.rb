@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = group.users.order(:name).page params[:page]
+    group = Group.find(params[:group_id])
+    #@users = group.users.order(:name).page params[:page]
+    @users = @group.users
   end
 
   def show
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
 
   def new
     group = Group.find(params[:group_id])
-    @user = group.users.new
+    @user = @group.users
   end
 
   def create
@@ -40,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end

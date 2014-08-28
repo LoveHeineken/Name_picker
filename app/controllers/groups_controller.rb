@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
+    company = Company.find(params[:company_id])
     @groups = @company.groups
   end
 
@@ -10,11 +11,13 @@ class GroupsController < ApplicationController
   end
 
   def new
+    company = Company.find(params[:company_id])
     @groups = @company.groups
     # @group = Group.new
   end
 
   def create
+    company = Company.find(params[:company_id])
     @groups = @company.groups.new(group_params)
     # @group = Group.new(group_params)
 
@@ -42,6 +45,10 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def set_group
+    @group = Group.find(params[:id])
+  end
 
   def group_params
     params.require(:group).permit(:name)
