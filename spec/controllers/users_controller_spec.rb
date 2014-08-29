@@ -4,13 +4,7 @@ describe UsersController do
   before(:each) do
     @company = FactoryGirl.create(:company_1)
     @group = FactoryGirl.create(:group_1)
-    @user = FactoryGirl.create(:user_1)
-    @company = @company.groups
-    @group = @company.groups
     @user = @group.users
-#    @user.group = @group
-#    company_id: @company.id
-#    group_id: @group.id
   end
 
   # viewの検証までする
@@ -27,16 +21,16 @@ describe UsersController do
 
   describe " POST :create" do
     context '保存に成功した場合' do
-      subject { post :create,:company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
+      subject { post :create, :company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
       # 件数が増えているかどうか確認する
-      it { expect{ subject }.to change(User, :count).by(1) }
+      it { expect{ subject }.to change(@user, :count).by(1) }
       it { should be_redirect }
     end
 
     context 'validation errorになった場合' do
       subject { post :create,:company_id => @company.id, :user => {"name" => "", "tel" => "1111-222-333", "mail" => "hogehoge"}, :group_id => @group.id }
       # 件数が増えているかどうか確認する
-      it { expect{ subject }.to_not change(User, :count) }
+      it { expect{ subject }.to_not change(@user, :count) }
       # it { should render_template(:new) }でも可能
       it { should render_template(:new) }
     end
