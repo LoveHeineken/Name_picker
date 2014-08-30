@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rspec/its'
+require 'its'
 
 describe Group do
   describe :name do

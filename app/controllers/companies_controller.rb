@@ -4,8 +4,8 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
-    #@companies = Company.order(:name).page params[:page]
+    #@companies = Company.all
+    @companies = Company.limit(10).order(:name).page(params[:page])
   end
 
   # GET /companies/1

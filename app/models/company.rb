@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
-  has_many :groups
+  paginates_per 10
+  has_many :groups, :dependent => :destroy
   validates :name, presence: true, length: { maximum: 6 }
   validates :url, presence: true, length: { maximum: 30 }, format: URI.regexp(['http', 'https'])
   validates :address, presence: true, length: { maximum: 18 }

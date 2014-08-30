@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'its'
 
 describe User do
   describe :name do

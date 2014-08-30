@@ -1,4 +1,5 @@
 class NameCard < ActiveRecord::Base
+  paginates_per 10
   belongs_to :user
 
   validates :name, presence: true, length: {maximum: AVAILABLE_TEXT_LENGTH}

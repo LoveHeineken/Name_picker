@@ -5,10 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-create_company_count = 1
-create_group_count = 1
-create_user_count = 1
-create_name_card_count = 1
+create_company_count = 10
+create_group_count = 10
+create_user_count = 10
+create_name_card_count = 10
 
 Company.delete_all
 
@@ -35,6 +35,7 @@ Company.all.each do |company|
     company.groups.build(
       name: "group_name_#{count}"
     )
+    company.save
   end
 end
 
@@ -50,6 +51,7 @@ Group.all.each do |group|
       mail: "test#{count}@example.com",
       tel: "0120-194-223#{count}",
     )
+    group.save
   end
 end
 
@@ -67,5 +69,6 @@ User.all.each do |user|
       fax: "0120-117-117#{count}",
       url: "http://example.com/company#{count + 1}"
     )
+    user.save
   end
 end

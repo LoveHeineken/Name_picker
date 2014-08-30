@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @user.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.mail %></td>
@@ -27,6 +27,6 @@
 </table>
 
 <br>
-
+<%= paginate @users %>
 <%= link_to 'New User', new_company_group_user_path %>
 <%= link_to 'Back', company_groups_path %>
