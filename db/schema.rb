@@ -24,19 +24,16 @@ ActiveRecord::Schema.define(version: 20130816124133) do
   end
 
   create_table "groups", force: true do |t|
+    t.integer  "company_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "hoges", force: true do |t|
-    t.integer  "suuji"
-    t.string   "mojiretsu"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "groups", ["company_id"], name: "index_groups_on_company_id"
 
   create_table "name_cards", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "address"
     t.string   "fax"
@@ -46,12 +43,17 @@ ActiveRecord::Schema.define(version: 20130816124133) do
     t.datetime "updated_at"
   end
 
+  add_index "name_cards", ["user_id"], name: "index_name_cards_on_user_id"
+
   create_table "users", force: true do |t|
+    t.integer  "group_id"
     t.string   "name"
     t.string   "mail"
     t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["group_id"], name: "index_users_on_group_id"
 
 end
