@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'capybara/rails'
 
 feature 'edit company' do
 

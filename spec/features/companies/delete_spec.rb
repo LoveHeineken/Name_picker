@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'capybara/rails'
 
 feature 'delete company' do
   background do
