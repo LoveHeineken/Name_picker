@@ -19,9 +19,9 @@ class GroupsController < ApplicationController
   def create
     #company = Company.find(params[:company_id])
     @group = @company.groups.new(group_params)
-
     if @group.save
-      redirect_to company_groups_path(params[:company_id]), notice: 'Group was successfully updated.'
+      #redirect_to company_groups_path(params[:company_id]), notice: 'Group was successfully updated.'
+      redirect_to company_groups_path(@group.company_id, @group.id), notice: 'Group was successfully updated.'
     else
       render action: 'new'
     end

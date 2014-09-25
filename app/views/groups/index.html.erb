@@ -11,9 +11,12 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= link_to 'Show', company_group(group) %></td>
-        <td><%= link_to 'Edit', edit_company_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <td><%= link_to group.name, company_group_path(@company, group) %></td>
+        <td><%= link_to 'Show', company_group_path(@company, group) %></td>
+        <td><%= link_to 'Edit', edit_company_group_path(@company, group) %></td>
+        <td><%= link_to 'Destroy', company_group_path(@company, group), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </td>
       </tr>
     <% end %>
   </tbody>

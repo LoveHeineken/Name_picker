@@ -3,8 +3,9 @@ require 'spec_helper'
 describe NameCardsController do
   before(:each) do
     @company = create(:company_1)
-    @group = create(:group_1)
-    @user = create(:user_1)
+    #@group = create(:group_1, company_id: @company.id)
+    @group = create(:group_1, company_id: @company.id)
+    @user = create(:user_1, group_id: @group.id)
     @name_card = @user.name_cards.new
   end
 
@@ -22,7 +23,7 @@ describe NameCardsController do
 
   describe " POST :create" do
     context '保存に成功した場合' do
-      subject { post :create, :name_card => {"name" => "hoge", "address" => "千葉県匝瑳市高253-19", "tel" => "1111-222-3333", "fax" => "1111-222-3333", "url" => "http://hogehoge.com"}, :company_id => @company.id,:group_id => @group.id, :user_id => @user.id }
+      subject { post :create, :name_card => {"name" => "hoge", "address" => "千葉県匝瑳市高253-19", "tel" => "1111-222-3333", "fax" => "1111-222-3333", "url" => "http://hogehoge.com"}, :company_id => @company.id, :group_id => @group.id, :user_id => @user.id }
       # 件数が増えているかどうか確認する
       it { expect{ subject }.to change(NameCard, :count).by(1) }
       it { should be_redirect }

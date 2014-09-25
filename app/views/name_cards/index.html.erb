@@ -21,9 +21,9 @@
         <td><%= name_card.fax %></td>
         <td><%= name_card.url %></td>
         <td>
-          <%= link_to 'Show', company_group_user_name_card(name_card) %><br />
-          <%= link_to 'Edit', edit_company_group_user_name_card_path(name_card) %><br />
-          <%= link_to 'Destroy', name_card, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', company_group_user_name_card_path(@user, name_card) %><br />
+          <%= link_to 'Edit', edit_company_group_user_name_card_path(@user, name_card) %><br />
+          <%= link_to 'Destroy', company_group_user_name_card_path(@user, name_card), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

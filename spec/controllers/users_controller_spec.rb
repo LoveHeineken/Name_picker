@@ -3,36 +3,38 @@ require 'spec_helper'
 describe UsersController do
   before do
     @company = create(:company_1)
-    @group = create(:group_1)
+    @group = create(:group_1, company_id: @company.id)
+    #@group.company_id = @company.id
+    #@group = @company.groups.where(id: @group.id)
     @user = @group.users.new
   end
 
   # viewの検証までする
   render_views
   describe " GET :index" do
-    #subject { get :index, :company_id => @company.id, :group_id => @group.id }
-    subject { get :index, :company_id => @company.id, :group_id => 1 }
+    subject { get :index, :company_id => @company.id, :group_id => @group.id }
+    #subject { get :index, :company_id => @company.id, :group_id => 1 }
     it { should be_success }
   end
 
   describe " GET :new" do
-    #subject { get :new , :company_id => @company.id, :group_id => @group.id}
-    subject { get :new , :company_id => @company.id, :group_id => 1 }
+    subject { get :new , :company_id => @company.id, :group_id => @group.id}
+    #subject { get :new , :company_id => @company.id, :group_id => 1 }
     it { should be_success }
   end
 
   describe " POST :create" do
     context '保存に成功した場合' do
-      #subject { post :create, :company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
-      subject { post :create, :company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => 1 }
+      #subject { post :create, :company_id => 1 , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
+      subject { post :create, :company_id => @company.id , :user => {"name" => "hoge", "tel" => "1111-222-3333", "mail" => "hogehoge@gmail.com"}, :group_id => @group.id }
       # 件数が増えているかどうか確認する
       it { expect{ subject }.to change(User, :count).by(1) }
       it { should be_redirect }
     end
 
     context 'validation errorになった場合' do
-      #subject { post :create,:company_id => @company.id, :user => {"name" => "", "tel" => "1111-222-333", "mail" => "hogehoge"}, :group_id => @group.id }
-      subject { post :create,:company_id => @company.id, :user => {"name" => "", "tel" => "1111-222-333", "mail" => "hogehoge"}, :group_id => 1 }
+      #subject { post :create,:company_id => 1, :user => {"name" => "", "tel" => "1111-222-333", "mail" => "hogehoge"}, :group_id => @group.id }
+      subject { post :create,:company_id => @company.id, :user => {"name" => "", "tel" => "1111-222-333", "mail" => "hogehoge"}, :group_id => @group.id }
       # 件数が増えているかどうか確認する
       it { expect{ subject }.to_not change(User, :count) }
       # it { should render_template(:new) }でも可能
