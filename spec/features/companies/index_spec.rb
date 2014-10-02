@@ -6,14 +6,7 @@ feature 'edit company' do
   background do
 
     # ログインしているユーザとそのグループやトピックを生成する
-
-
-    @user1 = create(:user_taro, tenant_id: tenant.id, main_group_id: group.id, admin: false)
-    @user2 = create(:user_taro, tenant_id: tenant.id, main_group_id: group.id, admin: true)
-
-    @company = create(:company, tenant_id: tenant.id, marker_id: @marker.id)
-
-    company = create(:company, tenant_id: tenant.id, marker_id: @marker.id)
+    @company = create(:company)
 
   end
 
