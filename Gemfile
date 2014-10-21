@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "spring", group: :development
-
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
@@ -59,3 +59,12 @@ gem 'devise'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :assets do
+  gem 'sass-rails'
+  gem 'less-rails'
+  gem 'coffee-rails'
+  gem 'twitter-bootstrap-rails'
+  gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier'
+end
