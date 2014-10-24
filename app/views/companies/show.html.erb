@@ -27,3 +27,4 @@
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+<%= link_to 'go to group', company_groups_path(company_id: @company.id) %>
