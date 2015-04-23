@@ -1,4 +1,5 @@
 BusinessCard::Application.routes.draw do
+  devise_for :users
   resources :companies do
     resources :groups do
       resources :users do
